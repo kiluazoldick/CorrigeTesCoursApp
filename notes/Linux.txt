@@ -1,0 +1,46 @@
+Introduction à Linux : Les Bases
+Qu'est-ce que Linux ?
+
+Linux est un système d'exploitation libre et open-source, ce qui signifie que son code source est accessible à tous et peut être modifié librement. Il est utilisé sur une grande variété de machines, des ordinateurs personnels aux serveurs en passant par les smartphones.
+
+Pourquoi utiliser Linux ?
+
+Gratuit: Linux est disponible gratuitement.
+Stable: Il est réputé pour sa stabilité et sa sécurité.
+Personnalisable: Vous pouvez le configurer selon vos besoins spécifiques.
+Large communauté: Une communauté active d'utilisateurs et de développeurs est là pour vous aider.
+Polyvalent: Il peut être utilisé pour de nombreuses tâches, du développement web à la science des données.
+Les concepts clés de Linux
+
+Terminal: C'est l'interface en ligne de commande qui vous permet d'interagir directement avec le système.
+Distributions: Ce sont des versions de Linux, comme Ubuntu, Fedora ou Debian, qui incluent le noyau Linux, des outils et des logiciels supplémentaires.
+Noyau: C'est le cœur de Linux, il gère les ressources matérielles et les logiciels.
+Fichiers et répertoires: Linux utilise une structure hiérarchique pour organiser les fichiers et les répertoires.
+Utilisateurs et groupes: Chaque utilisateur a des droits d'accès spécifiques aux fichiers et répertoires.
+Les commandes de base
+
+ls: Liste les fichiers et les répertoires dans un répertoire.
+cd: Change de répertoire.
+mkdir: Crée un nouveau répertoire.
+touch: Crée un nouveau fichier.
+rm: Supprime un fichier ou un répertoire.
+cp: Copie un fichier ou un répertoire.
+mv: Déplace ou renomme un fichier ou un répertoire.
+Un exemple simple : créer un fichier et un répertoire
+
+Ouvrez un terminal.
+Tapez mkdir mon_repertoire pour créer un nouveau répertoire nommé "mon_repertoire".
+Tapez cd mon_repertoire pour entrer dans ce répertoire.
+Tapez touch mon_fichier.txt pour créer un fichier texte nommé "mon_fichier.txt".
+Aller plus loin
+
+Édition de texte: Utilisez des éditeurs comme nano ou vim pour créer et modifier des fichiers.
+Gestion des paquets: Utilisez des outils comme apt (Debian, Ubuntu) ou yum (Fedora, CentOS) pour installer et gérer des logiciels.
+Scripts: Automatisez des tâches grâce à des scripts en Bash.
+Serveurs: Configurez des serveurs web, de messagerie ou de base de données.
+Ressources pour apprendre
+
+Manuels: Chaque commande Linux a un manuel associé. Tapez man commande pour obtenir de l'aide.
+Tutoriels en ligne: De nombreux sites web proposent des tutoriels gratuits pour apprendre Linux.
+Distributions pour débutants: Ubuntu et Linux Mint sont des distributions populaires pour les nouveaux utilisateurs.
+Communautés: Rejoignez des forums et des groupes en ligne pour poser des questions et partager vos connaissances.

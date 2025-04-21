@@ -1,0 +1,37 @@
+Titre : Introduction aux réseaux informatiques
+
+Contenu :
+Les réseaux informatiques permettent à des dispositifs de communiquer entre eux en partageant des ressources et des données. Un réseau se compose de plusieurs éléments essentiels, notamment les périphériques (ordinateurs, routeurs, commutateurs) et les protocoles.
+
+1. Les types de réseaux
+Réseaux locaux (LAN) : Un réseau local connecte des périphériques dans une zone géographique restreinte, comme une maison, un bureau ou une école.
+Réseaux étendus (WAN) : Un réseau étendu connecte des réseaux locaux sur de longues distances, comme Internet.
+Réseaux métropolitains (MAN) : Un MAN couvre une ville ou une région urbaine.
+2. Les modèles de communication
+Modèle OSI (Open Systems Interconnection) : Le modèle OSI est composé de 7 couches :
+Physique
+Liaison de données
+Réseau
+Transport
+Session
+Présentation
+Application
+Modèle TCP/IP : Ce modèle, utilisé sur Internet, simplifie le modèle OSI avec 4 couches :
+Accès au réseau
+Internet
+Transport
+Application
+3. Les protocoles réseau
+HTTP/HTTPS : Utilisés pour la navigation sur le web. HTTPS est la version sécurisée.
+TCP/UDP : TCP garantit la fiabilité des données, tandis qu'UDP est plus rapide mais non fiable.
+IP : Adresse chaque dispositif sur un réseau. Les versions courantes sont IPv4 et IPv6.
+DNS : Traduit les noms de domaine (exemple.com) en adresses IP.
+4. Les équipements réseau
+Routeur : Connecte plusieurs réseaux ensemble et dirige les paquets de données.
+Commutateur (Switch) : Connecte des périphériques dans un réseau local.
+Point d'accès sans fil : Permet aux appareils de se connecter via Wi-Fi.
+5. Concepts fondamentaux
+Adresse IP : Une adresse unique attribuée à chaque périphérique sur un réseau.
+Masque de sous-réseau : Utilisé pour diviser un réseau en sous-réseaux.
+Passerelle par défaut : Permet à un périphérique de communiquer avec des périphériques en dehors de son réseau.
+Les réseaux sont essentiels pour la communication moderne, soutenant des applications comme la navigation sur Internet, la messagerie instantanée et le transfert de fichiers.

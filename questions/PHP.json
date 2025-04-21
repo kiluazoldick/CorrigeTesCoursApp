@@ -1,0 +1,54 @@
+[
+    {
+        "text": "Quels sont les avantages de PHP pour le développement web ?",
+        "reponse": "PHP permet de créer des sites dynamiques en interagissant avec des bases de données et en générant du contenu HTML."
+    },
+    {
+        "text": "Quels langages ont influencé la syntaxe de PHP ?",
+        "reponse": "PHP s'inspire de langages comme C et Perl."
+    },
+    {
+        "text": "Quels types de données PHP supporte-t-il ?",
+        "reponse": "PHP supporte différents types de données comme les entiers, chaînes, tableaux et objets."
+    },
+    {
+        "text": "Quelles structures de contrôle sont disponibles en PHP ?",
+        "reponse": "Les conditions (if, else) et les boucles (for, while) permettent de contrôler le flux d'exécution."
+    },
+    {
+        "text": "Comment PHP traite-t-il les requêtes HTTP ?",
+        "reponse": "PHP traite les requêtes HTTP et génère les réponses, permettant de créer des pages web dynamiques."
+    },
+    {
+        "text": "Quels mécanismes permettent de conserver des informations utilisateur entre différentes pages en PHP ?",
+        "reponse": "Les sessions et cookies permettent de conserver des informations utilisateur entre différentes pages."
+    },
+    {
+        "text": "Quel est le SGBDR le plus couramment utilisé avec PHP ?",
+        "reponse": "MySQL est le SGBDR le plus couramment utilisé avec PHP."
+    },
+    {
+        "text": "Quelle interface permet d'accéder à différentes bases de données en PHP ?",
+        "reponse": "PDO est une interface pour accéder à différentes bases de données, offrant une couche d'abstraction et améliorant la sécurité."
+    },
+    {
+        "text": "Quels sont les principaux mécanismes de la programmation orientée objet en PHP ?",
+        "reponse": "Les principaux mécanismes sont les classes et objets, l'héritage et le polymorphisme."
+    },
+    {
+        "text": "Quels sont quelques exemples de frameworks PHP populaires ?",
+        "reponse": "Laravel, Symfony, CodeIgniter sont des frameworks PHP populaires."
+    },
+    {
+        "text": "Quelles sont les vulnérabilités les plus courantes en PHP ?",
+        "reponse": "Les attaques les plus courantes sont les injections SQL, XSS et CSRF."
+    },
+    {
+        "text": "Quelles sont les meilleures pratiques pour prévenir les vulnérabilités en PHP ?",
+        "reponse": "La validation des données, l'échappement des caractères spéciaux et l'utilisation de sessions sécurisées sont essentielles."
+    },
+    {
+        "text": "Quels sont quelques exemples de projets pour débuter en PHP ?",
+        "reponse": "Un blog simple et une application de gestion de tâches sont des exemples de projets pour débuter en PHP."
+    }
+]

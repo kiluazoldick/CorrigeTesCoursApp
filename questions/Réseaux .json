@@ -1,0 +1,30 @@
+[
+    {
+        "text": "Quels sont les éléments essentiels qui composent un réseau informatique ?",
+        "reponse": "Les éléments essentiels d'un réseau informatique incluent les périphériques (comme les ordinateurs, routeurs, commutateurs) et les protocoles."
+    },
+    {
+        "text": "Quelle est la différence entre un réseau local (LAN) et un réseau étendu (WAN) ?",
+        "reponse": "Un réseau local (LAN) connecte des périphériques dans une zone géographique restreinte, comme une maison ou un bureau, tandis qu'un réseau étendu (WAN) connecte des réseaux locaux sur de longues distances, comme Internet."
+    },
+    {
+        "text": "Quelles sont les 7 couches du modèle OSI ?",
+        "reponse": "Les 7 couches du modèle OSI sont : Physique, Liaison de données, Réseau, Transport, Session, Présentation, Application."
+    },
+    {
+        "text": "Quelle est la principale différence entre TCP et UDP ?",
+        "reponse": "TCP garantit la fiabilité des données, tandis qu'UDP est plus rapide mais ne garantit pas la fiabilité."
+    },
+    {
+        "text": "Quel est le rôle d'un routeur dans un réseau informatique ?",
+        "reponse": "Un routeur connecte plusieurs réseaux ensemble et dirige les paquets de données."
+    },
+    {
+        "text": "Qu'est-ce qu'une adresse IP et pourquoi est-elle importante ?",
+        "reponse": "Une adresse IP est une adresse unique attribuée à chaque périphérique sur un réseau. Elle est importante car elle permet l'identification et la communication entre dispositifs."
+    },
+    {
+        "text": "Quel est le rôle du DNS dans un réseau informatique ?",
+        "reponse": "Le DNS traduit les noms de domaine (comme exemple.com) en adresses IP, permettant aux utilisateurs d'accéder à des sites web en utilisant des noms plutôt que des adresses numériques."
+    }
+]

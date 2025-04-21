@@ -1,0 +1,30 @@
+[
+    {
+        "text": "Quels sont les avantages de l'utilisation de Linux ?",
+        "reponse": "Les avantages de l'utilisation de Linux incluent sa gratuité, sa stabilité, sa personnalisation, sa large communauté et sa polyvalence."
+    },
+    {
+        "text": "Qu'est-ce qu'un terminal dans le contexte de Linux ?",
+        "reponse": "Un terminal dans le contexte de Linux est une interface en ligne de commande qui permet d'interagir directement avec le système."
+    },
+    {
+        "text": "Quelles sont les différences entre une distribution Linux et le noyau Linux ?",
+        "reponse": "Une distribution Linux est une version de Linux qui inclut le noyau Linux, des outils et des logiciels supplémentaires, tandis que le noyau Linux est le cœur du système d'exploitation qui gère les ressources matérielles et les logiciels."
+    },
+    {
+        "text": "Comment créer un répertoire et un fichier dans Linux en utilisant le terminal ?",
+        "reponse": "Pour créer un répertoire dans Linux, utilisez la commande `mkdir mon_repertoire`, puis pour créer un fichier, utilisez la commande `touch mon_fichier.txt` dans le répertoire créé."
+    },
+    {
+        "text": "Quels sont quelques exemples de commandes de base dans Linux ?",
+        "reponse": "Quelques exemples de commandes de base dans Linux incluent `ls` pour lister les fichiers, `cd` pour changer de répertoire, `mkdir` pour créer un répertoire, `touch` pour créer un fichier, `rm` pour supprimer un fichier ou répertoire, `cp` pour copier un fichier ou répertoire, et `mv` pour déplacer ou renommer un fichier ou répertoire."
+    },
+    {
+        "text": "Comment peut-on installer et gérer des logiciels dans Linux ?",
+        "reponse": "On peut installer et gérer des logiciels dans Linux en utilisant des outils de gestion de paquets comme `apt` pour les distributions Debian et Ubuntu, ou `yum` pour les distributions Fedora et CentOS."
+    },
+    {
+        "text": "Quels sont quelques éditeurs de texte couramment utilisés dans Linux ?",
+        "reponse": "Quelques éditeurs de texte couramment utilisés dans Linux incluent `nano` et `vim`."
+    }
+]
