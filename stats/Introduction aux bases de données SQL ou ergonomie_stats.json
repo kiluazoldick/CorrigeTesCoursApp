@@ -1,0 +1,60 @@
+{
+    "attempts": [
+        {
+            "timestamp": "2025-04-25T02:21:51.341176",
+            "question": "Qu'est-ce que l'informatique et quels sont ses principaux objectifs ?",
+            "user_answer": "L’informatique est la science du traitement rationnel et automatique des données au moyens des terminaux intelligents permettant la numérisation des données le stockage et l’analyse des données",
+            "correct_answer": "L'informatique est la science du traitement rationnel et automatique des données au moyen de terminaux intelligents. Ses principaux objectifs incluent la numérisation, le stockage et l'analyse des données.",
+            "score": 5
+        },
+        {
+            "timestamp": "2025-04-25T02:21:53.051040",
+            "question": "Qu'est-ce que le cloud computing et à quoi sert-il en informatique ?",
+            "user_answer": "Le cloud computing : qui stocke virtuellement les données gigantesques ",
+            "correct_answer": "Le cloud computing est un concept qui permet de stocker virtuellement des données gigantesques, facilitant ainsi leur accès et leur gestion.",
+            "score": 4
+        },
+        {
+            "timestamp": "2025-04-25T02:21:54.577923",
+            "question": "Qu'est-ce que les big data et quelles sont les caractéristiques qui les définissent ?",
+            "user_answer": "Les big datas : qui sont les données massives s’appuyant sur 3V ou 4V voir 5V ",
+            "correct_answer": "Les big data sont des données massives qui s'appuient sur les caractéristiques des '3V' ou '4V' voire '5V' (Volume, Variété, Vitesse, Véracité, Valeur).",
+            "score": 5
+        },
+        {
+            "timestamp": "2025-04-25T02:21:56.533200",
+            "question": "Expliquez ce qu'est la blockchain et son rôle dans le traitement des données.",
+            "user_answer": "La blockcain : qui est une technologie de transaction sécurisées et infalsifiable des données",
+            "correct_answer": "La blockchain est une technologie qui permet des transactions sécurisées et infalsifiables des données, assurant ainsi leur intégrité.",
+            "score": 5
+        },
+        {
+            "timestamp": "2025-04-25T02:21:57.753134",
+            "question": "Quelles sont les deux principales techniques d'approche de l'intelligence artificielle et leurs concepts associés ?",
+            "user_answer": "L’intelligence artificielle : avec ses deux techniques d’approche (computationnalisassions, connexionnisme) et ses concepts (machin Learning, Deep Learning, statistiques Learning)",
+            "correct_answer": "Les deux techniques d'approche de l'intelligence artificielle sont le computationnalisme et le connexionnisme. Les concepts associés incluent le Machine Learning, le Deep Learning et les statistiques Learning.",
+            "score": 5
+        },
+        {
+            "timestamp": "2025-04-25T02:21:58.909869",
+            "question": "Quel rôle joue Internet dans le traitement et l'échange des données ?",
+            "user_answer": "Internet : qui est une technologie de partage, de communication et d’échange de donnée à travers les plates-formes ",
+            "correct_answer": "Internet est une technologie qui facilite le partage, la communication et l'échange de données à travers différentes plateformes.",
+            "score": 5
+        },
+        {
+            "timestamp": "2025-04-25T02:22:00.507566",
+            "question": "Qu'est-ce que l'Internet des objets et comment fonctionne-t-il ?",
+            "user_answer": "L’internet des objets : c’est la communication des système embarqués à travers des capteurs et internet ",
+            "correct_answer": "L'Internet des objets (IoT) est la communication de systèmes embarqués à travers des capteurs et Internet, permettant une collecte et un traitement automatisé des données.",
+            "score": 5
+        },
+        {
+            "timestamp": "2025-04-25T02:22:07.139085",
+            "question": "Comment les concepts informatiques contribuent-ils à la prise de décision en entreprise ?",
+            "user_answer": "Ainsi ces concepts consistent à la collecte des donnés au stockage à la visualisation, à l’interprétation a fin de prendre des décisions aidant au fonctionnement de l’entreprise on parle de la BI (Business Intelligence ou informatique décisionnelle)",
+            "correct_answer": "Les concepts informatiques permettent la collecte, le stockage, la visualisation et l'interprétation des données, ce qui aide à la prise de décision en entreprise, notamment à travers la Business Intelligence (BI) ou informatique décisionnelle.",
+            "score": 5
+        }
+    ]
+}

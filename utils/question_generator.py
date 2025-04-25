@@ -12,8 +12,10 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 # Load environment variables
 load_dotenv()
 
-# Configuration API
+#recuperer la cle api 
 api_key = os.getenv("DEEPSEEK_KEY")
+
+# Configuration API
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
     api_key=api_key,
@@ -24,11 +26,11 @@ def generate_questions(note_title, note_content):
     Génère des questions à partir du contenu des notes en utilisant l'API DeepSeek.
     :param note_title: Titre de la note
     :param note_content: Contenu de la note
-    :return: Une liste de questions générées
+    :return: Une liste de  questions générées
     """
     try:
         prompt = (
-            f"À partir de ce texte, crée des questions relativement ouvertes qui permettent l'apprentissage actif. "
+            f"À partir de ce texte, crée des questions  relativement ouvertes qui permettent l'apprentissage actif. "
             f"Tu choisiras un nombre de questions adéquat en fonction de la longueur du texte.\n"
             f"Pour chaque question, retourne un JSON avec deux clés : "
             f"'text' pour la question et 'reponse' pour la réponse correcte.\n"
