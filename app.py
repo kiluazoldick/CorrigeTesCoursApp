@@ -9,7 +9,9 @@ st.set_page_config(
 import os, json
 from utils.note_manager import load_notes, save_note, delete_note, update_note
 from utils.question_generator import generate_questions, evaluate_answer
+from utils.summary_generator import generate_summary, load_summary, save_all_summaries
 from config import QUESTIONS_DIR
+from config import SUMMARY_DIR
 from utils.stats_manager import get_all_stats, save_quiz_result, delete_note_stats, delete_all_stats
 
 # Application principale
@@ -19,7 +21,7 @@ st.sidebar.title("📝 **Corrige Tes Cours**")
 st.sidebar.markdown("<h3>Menu</h3>", unsafe_allow_html=True)
 menu = st.sidebar.radio(
     "📂 <span style='color: #0066CC;'>Choisissez une option :</span>", 
-    ["Dashboard", "Notes", "Quiz", "Performances"], 
+    ["Dashboard", "Notes","Résumé", "Quiz", "Performances"], 
     format_func=lambda x: f"🔹 {x}", 
     index=0,
     label_visibility="hidden", 
@@ -40,6 +42,7 @@ if menu == "Dashboard":
             <p><strong>Corrige Tes Cours</strong> vous permet de :</p>
             <ul>
                 <li>🗒️ <strong>Prendre des notes</strong> et les organiser.</li>
+                <li>📋 <strong>Résumer ses notes</strong> pour un meilleur apprentissage.</li>
                 <li>❓ <strong>Générer des questions</strong> pour vos cours.</li>
                 <li>✅ <strong>Pratiquer l'apprentissage actif</strong> et suivre vos progrès.</li>
             </ul>
@@ -232,6 +235,66 @@ elif menu == "Quiz":
         else:
             st.info("Aucune question disponible. Cliquez sur 'Générer des questions' pour commencer.")
 
+elif menu == "Résumé":
+    st.header("Mode Résumé")
+    
+    # Charger les notes disponibles
+    notes = load_notes()
+    note_titles = [note["title"] for note in notes]
+    selected_note = st.selectbox("Choisissez une note à résumer", note_titles)
+
+    if selected_note:
+        note_content = next(note["content"] for note in notes if note["title"] == selected_note)
+        summary_file_path = os.path.join(SUMMARY_DIR, f"{selected_note}_summary.txt")
+
+        # Initialisation du résumé
+        if "summary" not in st.session_state or st.session_state.get("current_summary_note") != selected_note:
+            if os.path.exists(summary_file_path):
+                with open(summary_file_path, "r", encoding="utf-8") as file:
+                    st.session_state.summary = file.read()
+            else:
+                st.session_state.summary = ""
+            st.session_state.current_summary_note = selected_note
+
+        # Générer un nouveau résumé
+        if st.button("📝 Générer le résumé"):
+            try:
+                with st.spinner("Génération du résumé en cours..."):
+                    new_summary = generate_summary(selected_note, note_content)
+
+                if new_summary:
+                    with open(summary_file_path, "w", encoding="utf-8") as file:
+                        file.write(new_summary)
+                    
+                    st.session_state.summary = new_summary
+                    st.success("Résumé généré et sauvegardé avec succès !")
+                else:
+                    st.error("L'API n'a retourné aucun résumé.")
+            except Exception as e:
+                st.error(f"Une erreur s'est produite : {e}")
+
+        # Afficher le résumé
+        if st.session_state.summary:
+            st.write("### Résumé :")
+            st.text_area(
+                "Voici votre résumé :",
+                value=st.session_state.summary,
+                height=300,
+                disabled=True
+            )
+
+            # Bouton pour supprimer le résumé
+            if st.button("🗑️ Supprimer le résumé"):
+                try:
+                    os.remove(summary_file_path)
+                    st.session_state.summary = ""
+                    st.success("Le résumé a été supprimé avec succès !")
+                    st.rerun()
+                except Exception as e:
+                    st.error(f"Erreur lors de la suppression : {e}")
+        else:
+            st.info("Aucun résumé disponible. Cliquez sur 'Générer le résumé' pour commencer.")
+            
 
 elif menu == "Performances":
     st.header("📊 Performances d'apprentissage")
