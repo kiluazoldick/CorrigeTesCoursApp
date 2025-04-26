@@ -115,6 +115,10 @@ def evaluate_answer(question, user_answer, correct_answer):
             f"- Si les mots-clés principaux sont présents, la note doit être élevée (4 ou 5)\n"
             f"- La forme de la réponse importe moins que le fond\n"
             f"- Une réponse concise et précise vaut autant qu'une réponse détaillée\n\n"
+            f"- Si la reponse est vide, la note est  0\n"
+            f"- Si il n'y a pas de réponse, la note est 0\n"
+            f"- malgres le fait que tu sois bienveillant nhesite pas a 0\n si la réponse est vide\n"
+            f"- dans tous les cas soit objectif dans la notation et surtout ne donne aucune note autre que 0\n si la réponse est vide\n"
             f"Retourne UNIQUEMENT un JSON valide avec ce format exact: {{\"score\": X}} où X est un nombre entre 0 et 5.\n"
             f"Utilise les guillemets doubles pour la clé \"score\"."
         )
