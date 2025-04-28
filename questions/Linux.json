@@ -1,30 +1,34 @@
 [
     {
-        "text": "Quels sont les avantages de l'utilisation de Linux ?",
-        "reponse": "Les avantages de l'utilisation de Linux incluent sa gratuit√©, sa stabilit√©, sa personnalisation, sa large communaut√© et sa polyvalence."
+        "text": "Qu'est-ce que Linux et pourquoi est-il considÈrÈ comme open-source ?",
+        "reponse": "Linux est un systËme d'exploitation libre et open-source, ce qui signifie que son code source est accessible ‡ tous et peut Ítre modifiÈ librement."
     },
     {
-        "text": "Qu'est-ce qu'un terminal dans le contexte de Linux ?",
-        "reponse": "Un terminal dans le contexte de Linux est une interface en ligne de commande qui permet d'interagir directement avec le syst√®me."
+        "text": "Quels sont les avantages principaux de l'utilisation de Linux ?",
+        "reponse": "Linux est gratuit, stable, personnalisable, possËde une large communautÈ et est polyvalent."
     },
     {
-        "text": "Quelles sont les diff√©rences entre une distribution Linux et le noyau Linux ?",
-        "reponse": "Une distribution Linux est une version de Linux qui inclut le noyau Linux, des outils et des logiciels suppl√©mentaires, tandis que le noyau Linux est le c≈ìur du syst√®me d'exploitation qui g√®re les ressources mat√©rielles et les logiciels."
+        "text": "Qu'est-ce qu'une distribution Linux et pouvez-vous en citer quelques-unes ?",
+        "reponse": "Une distribution Linux est une version de Linux qui inclut le noyau Linux, des outils et des logiciels supplÈmentaires. Exemples : Ubuntu, Fedora, Debian."
     },
     {
-        "text": "Comment cr√©er un r√©pertoire et un fichier dans Linux en utilisant le terminal ?",
-        "reponse": "Pour cr√©er un r√©pertoire dans Linux, utilisez la commande `mkdir mon_repertoire`, puis pour cr√©er un fichier, utilisez la commande `touch mon_fichier.txt` dans le r√©pertoire cr√©√©."
+        "text": "Qu'est-ce que le terminal dans un systËme Linux et ‡ quoi sert-il ?",
+        "reponse": "Le terminal est l'interface en ligne de commande qui permet d'interagir directement avec le systËme."
     },
     {
-        "text": "Quels sont quelques exemples de commandes de base dans Linux ?",
-        "reponse": "Quelques exemples de commandes de base dans Linux incluent `ls` pour lister les fichiers, `cd` pour changer de r√©pertoire, `mkdir` pour cr√©er un r√©pertoire, `touch` pour cr√©er un fichier, `rm` pour supprimer un fichier ou r√©pertoire, `cp` pour copier un fichier ou r√©pertoire, et `mv` pour d√©placer ou renommer un fichier ou r√©pertoire."
+        "text": "Quelle commande utiliseriez-vous pour lister les fichiers dans un rÈpertoire ?",
+        "reponse": "La commande 'ls' permet de lister les fichiers et les rÈpertoires dans un rÈpertoire."
     },
     {
-        "text": "Comment peut-on installer et g√©rer des logiciels dans Linux ?",
-        "reponse": "On peut installer et g√©rer des logiciels dans Linux en utilisant des outils de gestion de paquets comme `apt` pour les distributions Debian et Ubuntu, ou `yum` pour les distributions Fedora et CentOS."
+        "text": "Comment crÈer un nouveau fichier texte nommÈ 'mon_fichier.txt' dans un rÈpertoire spÈcifique ?",
+        "reponse": "Ouvrez un terminal, naviguez dans le rÈpertoire souhaitÈ avec 'cd', puis tapez 'touch mon_fichier.txt' pour crÈer le fichier."
     },
     {
-        "text": "Quels sont quelques √©diteurs de texte couramment utilis√©s dans Linux ?",
-        "reponse": "Quelques √©diteurs de texte couramment utilis√©s dans Linux incluent `nano` et `vim`."
+        "text": "Quels sont les outils de gestion des paquets mentionnÈs dans le texte et ‡ quoi servent-ils ?",
+        "reponse": "Les outils comme 'apt' (Debian, Ubuntu) ou 'yum' (Fedora, CentOS) sont utilisÈs pour installer et gÈrer des logiciels."
+    },
+    {
+        "text": "Quelles ressources sont disponibles pour apprendre Linux ?",
+        "reponse": "Les ressources incluent les manuels de commande, les tutoriels en ligne, les distributions pour dÈbutants comme Ubuntu et Linux Mint, et les communautÈs en ligne."
     }
 ]
