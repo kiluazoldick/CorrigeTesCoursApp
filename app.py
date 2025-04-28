@@ -49,7 +49,7 @@ if menu == "Dashboard":
     )
 
 
-elif menu == "Prise de Notes":
+elif menu == "Notes":
     st.header("Prise de Notes")
     
     if "notes" not in st.session_state:
@@ -119,7 +119,7 @@ elif menu == "Prise de Notes":
 
 
 
-elif menu == "Mode Quiz":
+elif menu == "Quiz":
     st.header("Mode Quiz")
     
     # Charger les notes disponibles
