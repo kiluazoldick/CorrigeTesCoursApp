@@ -19,7 +19,7 @@ st.sidebar.title("📝 **Corrige Tes Cours**")
 st.sidebar.markdown("<h3>Menu</h3>", unsafe_allow_html=True)
 menu = st.sidebar.radio(
     "📂 <span style='color: #0066CC;'>Choisissez une option :</span>", 
-    ["Dashboard", "Prise de Notes", "Mode Quiz", "Performances"], 
+    ["Dashboard", "Notes", "Quiz", "Performances"], 
     format_func=lambda x: f"🔹 {x}", 
     index=0,
     label_visibility="hidden", 

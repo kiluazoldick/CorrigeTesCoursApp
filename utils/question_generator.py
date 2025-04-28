@@ -17,7 +17,7 @@ load_dotenv()
 # Configuration API
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key="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",
+    api_key="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",
 )
 
 def generate_questions(note_title, note_content):
