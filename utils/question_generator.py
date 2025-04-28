@@ -2,6 +2,7 @@ import os
 import re
 import json
 import logging
+import streamlit as st
 from openai import OpenAI
 from dotenv import load_dotenv
 from config import QUESTIONS_DIR, QUESTIONS_FILE
@@ -17,7 +18,7 @@ load_dotenv()
 # Configuration API
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key=st.secrets["OPENROUTER_API_KEY"],
+    api_key= st.secrets["OPENROUTER_API_KEY"],
 )
 
 def generate_questions(note_title, note_content):
