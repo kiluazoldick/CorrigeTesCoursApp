@@ -204,7 +204,7 @@ elif menu == "Quiz":
             st.session_state.user_answers = {}
 
         # Générer de nouvelles questions
-        if st.button("Générer des questions"):
+        if st.button("❓Générer des questions"):
             try:
                 with st.spinner("Génération des questions en cours..."):
                     new_questions = generate_questions(selected_note, note_content)
