@@ -1,24 +1,55 @@
 import streamlit as st
+import os, json
+from utils.note_manager import load_notes, save_note, delete_note, update_note
+from utils.question_generator import generate_questions, evaluate_answer
+from utils.summary_generator import generate_summary
+from config import QUESTIONS_DIR, SUMMARY_DIR
+from utils.stats_manager import get_all_stats, save_quiz_result, delete_note_stats, delete_all_stats
+from database import init_db
+from auth import login_form, register_form
 
+# Configuration de la page - doit être le premier élément
 st.set_page_config(
     page_title="CorrigeTesCours",
     page_icon="📝",
     layout="wide"
 )
 
-import os, json
-from utils.note_manager import load_notes, save_note, delete_note, update_note
-from utils.question_generator import generate_questions, evaluate_answer
-from utils.summary_generator import generate_summary, load_summary, save_all_summaries
-from config import QUESTIONS_DIR
-from config import SUMMARY_DIR
-from utils.stats_manager import get_all_stats, save_quiz_result, delete_note_stats, delete_all_stats
+# Initialisation de la base de données
+init_db()
 
-# Application principale
+# Gestion de l'authentification
+if 'logged_in' not in st.session_state:
+    st.session_state.logged_in = False
+    st.session_state.user = None
+
+# Si l'utilisateur n'est pas connecté, afficher les formulaires d'authentification
+if not st.session_state.logged_in:
+    st.title("Se connecter à CorrigeTesCours 🔐")
+    tab1, tab2 = st.tabs(["Connexion", "Inscription"])
+    
+    with tab1:
+        login_form()
+    
+    with tab2:
+        register_form()
+    
+    st.stop()
+
+# ================================================
+# Application principale (utilisateur connecté)
+# ================================================
 
 # Sidebar 
-st.sidebar.title("📝 **Corrige Tes Cours**")
+st.sidebar.title(f"📝 Bonjour, {st.session_state.user['username']}")
 st.sidebar.markdown("<h3>Menu</h3>", unsafe_allow_html=True)
+
+# Ajouter un bouton de déconnexion
+if st.sidebar.button("🚪 Déconnexion"):
+    st.session_state.logged_in = False
+    st.session_state.user = None
+    st.rerun()
+
 menu = st.sidebar.radio(
     "📂 <span style='color: #0066CC;'>Choisissez une option :</span>", 
     ["Dashboard", "Notes","Résumé", "Quiz", "Performances"], 
@@ -33,8 +64,8 @@ if menu == "Dashboard":
     # Header with custom styles
     st.markdown("<h1>Bienvenue sur Corrige Tes Cours ⚡️</h1>", unsafe_allow_html=True)
     st.markdown("---")
-    st.subheader("Apprendre ses cours grâce au _Active Learning_!")
-
+    st.subheader(f"Apprendre ses cours grâce au _Active Learning_, {st.session_state.user['username']}!")
+    
     # Feature list with emojis and custom formatting
     st.markdown(
         """
@@ -51,12 +82,13 @@ if menu == "Dashboard":
         unsafe_allow_html=True
     )
 
-
 elif menu == "Notes":
     st.header("🗒️ Prise de Notes")
     
+    user_id = st.session_state.user["id"]
+    
     if "notes" not in st.session_state:
-        st.session_state.notes = load_notes()
+        st.session_state.notes = load_notes(user_id)
     
     if "editing_note" not in st.session_state:
         st.session_state.editing_note = None
@@ -73,8 +105,8 @@ elif menu == "Notes":
                     st.session_state.editing_note = note
             with col3:
                 if st.button("Supprimer", key=f"delete_{note['title']}"):
-                    delete_note(note['title'])
-                    st.session_state.notes = load_notes()
+                    delete_note(user_id, note['title'])
+                    st.session_state.notes = load_notes(user_id)
                     if st.session_state.editing_note and st.session_state.editing_note['title'] == note['title']:
                         st.session_state.editing_note = None
                     st.rerun()
@@ -94,9 +126,9 @@ elif menu == "Notes":
         col1, col2 = st.columns(2)
         with col1:
             if st.button("Sauvegarder les modifications"):
-                if update_note(st.session_state.editing_note['title'], edited_content):
+                if update_note(user_id, st.session_state.editing_note['title'], edited_content):
                     st.success("Note mise à jour avec succès!")
-                    st.session_state.notes = load_notes()
+                    st.session_state.notes = load_notes(user_id)
                     st.session_state.editing_note = None
                     st.rerun()
                 else:
@@ -113,8 +145,8 @@ elif menu == "Notes":
     note_content = st.text_area("Contenu de la note", height=200)
     if st.button("Sauvegarder"):
         if note_title and note_content:
-            save_note(note_title, note_content)
-            st.session_state.notes = load_notes()
+            save_note(user_id, note_title, note_content)
+            st.session_state.notes = load_notes(user_id)
             st.success(f"Note '{note_title}' sauvegardée avec succès !")
             st.rerun()
         else:
@@ -124,35 +156,28 @@ elif menu == "Résumé":
     st.header("📋 Mode Résumé")
     
     # Charger les notes disponibles
-    notes = load_notes()
+    user_id = st.session_state.user["id"]
+    notes = load_notes(user_id)
     note_titles = [note["title"] for note in notes]
     selected_note = st.selectbox("Choisissez une note à résumer", note_titles)
 
     if selected_note:
         note_content = next(note["content"] for note in notes if note["title"] == selected_note)
-        summary_file_path = os.path.join(SUMMARY_DIR, f"{selected_note}_summary.txt")
-
+        
         # Initialisation du résumé
         if "summary" not in st.session_state or st.session_state.get("current_summary_note") != selected_note:
-            if os.path.exists(summary_file_path):
-                with open(summary_file_path, "r", encoding="utf-8") as file:
-                    st.session_state.summary = file.read()
-            else:
-                st.session_state.summary = ""
+            st.session_state.summary = ""
             st.session_state.current_summary_note = selected_note
 
         # Générer un nouveau résumé
         if st.button("📝 Générer le résumé"):
             try:
                 with st.spinner("Génération du résumé en cours..."):
-                    new_summary = generate_summary(selected_note, note_content)
+                    new_summary = generate_summary(user_id, selected_note, note_content)
 
                 if new_summary:
-                    with open(summary_file_path, "w", encoding="utf-8") as file:
-                        file.write(new_summary)
-                    
                     st.session_state.summary = new_summary
-                    st.success("Résumé généré et sauvegardé avec succès !")
+                    st.success("Résumé généré avec succès !")
                 else:
                     st.error("L'API n'a retourné aucun résumé.")
             except Exception as e:
@@ -165,18 +190,8 @@ elif menu == "Résumé":
                 "Voici votre résumé :",
                 value=st.session_state.summary,
                 height=300,
-                disabled=True
+                disabled=False
             )
-
-            # Bouton pour supprimer le résumé
-            if st.button("🗑️ Supprimer le résumé"):
-                try:
-                    os.remove(summary_file_path)
-                    st.session_state.summary = ""
-                    st.success("Le résumé a été supprimé avec succès !")
-                    st.rerun()
-                except Exception as e:
-                    st.error(f"Erreur lors de la suppression : {e}")
         else:
             st.info("Aucun résumé disponible. Cliquez sur 'Générer le résumé' pour commencer.")
 
@@ -184,21 +199,18 @@ elif menu == "Quiz":
     st.header("❓ Mode Quiz")
     
     # Charger les notes disponibles
-    notes = load_notes()
+    user_id = st.session_state.user["id"]
+    notes = load_notes(user_id)
     note_titles = [note["title"] for note in notes]
     selected_note = st.selectbox("Choisissez une note", note_titles)
 
     if selected_note:
         note_content = next(note["content"] for note in notes if note["title"] == selected_note)
-        json_file_path = os.path.join(QUESTIONS_DIR, f"{selected_note}.json")
+        json_file_path = os.path.join(QUESTIONS_DIR, str(user_id), f"{selected_note}.json")
         
         # Initialisation des questions
         if "questions" not in st.session_state or st.session_state.get("current_note") != selected_note:
-            if os.path.exists(json_file_path):
-                with open(json_file_path, "r") as file:
-                    st.session_state.questions = json.load(file)
-            else:
-                st.session_state.questions = []
+            st.session_state.questions = []
             st.session_state.current_note = selected_note
             # Initialiser un dictionnaire pour stocker les réponses
             st.session_state.user_answers = {}
@@ -207,15 +219,12 @@ elif menu == "Quiz":
         if st.button("❓Générer des questions"):
             try:
                 with st.spinner("Génération des questions en cours..."):
-                    new_questions = generate_questions(selected_note, note_content)
+                    new_questions = generate_questions(user_id, selected_note, note_content)
                 
                 if new_questions:
-                    with open(json_file_path, "w") as file:
-                        json.dump(new_questions, file, indent=4, ensure_ascii=False)
-                    
                     st.session_state.questions = new_questions
                     st.session_state.user_answers = {}  # Réinitialiser les réponses
-                    st.success("Questions générées et sauvegardées avec succès !")
+                    st.success("Questions générées avec succès !")
                 else:
                     st.error("L'API n'a retourné aucune question.")
             except Exception as e:
@@ -255,6 +264,7 @@ elif menu == "Quiz":
                         
                         # Sauvegarder le résultat
                         save_quiz_result(
+                            user_id,
                             selected_note,
                             question['text'],
                             user_answer,
@@ -278,17 +288,6 @@ elif menu == "Quiz":
                 if st.button("🔄 Recommencer le quiz"):
                     st.session_state.user_answers = {}
                     st.rerun()
-
-            # Bouton pour supprimer les questions
-            if st.button("🗑️ Supprimer toutes les questions"):
-                try:
-                    os.remove(json_file_path)
-                    st.session_state.questions = []
-                    st.session_state.user_answers = {}
-                    st.success("Les questions ont été supprimées avec succès !")
-                    st.rerun()
-                except Exception as e:
-                    st.error(f"Erreur lors de la suppression : {e}")
         
         else:
             st.info("Aucune question disponible. Cliquez sur 'Générer des questions' pour commencer.")
@@ -297,7 +296,8 @@ elif menu == "Quiz":
 elif menu == "Performances":
     st.header("📊 Performances d'apprentissage")
     
-    stats = get_all_stats()
+    user_id = st.session_state.user["id"]
+    stats = get_all_stats(user_id)
     if not stats:
         st.info("Aucune statistique disponible pour le moment. Commencez à répondre à des quiz pour voir vos performances !")
     else:
@@ -359,7 +359,7 @@ elif menu == "Performances":
                     
                     # Bouton pour supprimer l'historique de cette note
                     if st.button("🗑️ Supprimer l'historique", key=f"delete_{note_title}"):
-                        if delete_note_stats(note_title):
+                        if delete_note_stats(user_id, note_title):
                             st.success(f"Historique supprimé pour {note_title}")
                             st.rerun()
                         else:
@@ -368,10 +368,8 @@ elif menu == "Performances":
         # Bouton pour supprimer tout l'historique
         st.markdown("---")
         if st.button("🗑️ Supprimer tout l'historique", type="secondary"):
-            if delete_all_stats():
+            if delete_all_stats(user_id):
                 st.success("Tout l'historique a été supprimé")
                 st.rerun()
             else:
                 st.error("Erreur lors de la suppression de l'historique")
-
-

@@ -6,3 +6,7 @@ __pycache__/
 
 .env
 .streamlit/secrets.toml
+notes/
+questions/
+stats/
+summaries/

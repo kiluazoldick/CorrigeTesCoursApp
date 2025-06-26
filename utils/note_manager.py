@@ -1,37 +1,45 @@
 import os
 from config import NOTES_DIR  
 
-def load_notes():
+def load_notes(user_id):
+    """Charge les notes d'un utilisateur spécifique"""
+    user_dir = os.path.join(NOTES_DIR, str(user_id))
     notes = []
-    if not os.path.exists(NOTES_DIR):
-        os.makedirs(NOTES_DIR)
-    for filename in os.listdir(NOTES_DIR):
+    
+    if not os.path.exists(user_dir):
+        os.makedirs(user_dir)
+        return notes
+    
+    for filename in os.listdir(user_dir):
         if filename.endswith(".txt"):
-            with open(os.path.join(NOTES_DIR, filename), "r") as file:
+            with open(os.path.join(user_dir, filename), "r", encoding="utf-8") as file:
                 notes.append({"title": filename.replace(".txt", ""), "content": file.read()})
     return notes
 
-def save_note(title, content):
-    if not os.path.exists(NOTES_DIR):
-        os.makedirs(NOTES_DIR)
-    with open(os.path.join(NOTES_DIR, f"{title}.txt"), "w") as file:
+def save_note(user_id, title, content):
+    """Sauvegarde une note pour un utilisateur spécifique"""
+    user_dir = os.path.join(NOTES_DIR, str(user_id))
+    if not os.path.exists(user_dir):
+        os.makedirs(user_dir)
+    
+    with open(os.path.join(user_dir, f"{title}.txt"), "w", encoding="utf-8") as file:
         file.write(content)
 
-def delete_note(title):
-    filepath = os.path.join(NOTES_DIR, f"{title}.txt")
+def delete_note(user_id, title):
+    """Supprime une note d'un utilisateur spécifique"""
+    user_dir = os.path.join(NOTES_DIR, str(user_id))
+    filepath = os.path.join(user_dir, f"{title}.txt")
+    
     if os.path.exists(filepath):
         os.remove(filepath)
 
-def update_note(title, new_content):
-    """
-    Met à jour le contenu d'une note existante
-    :param title: Titre de la note
-    :param new_content: Nouveau contenu
-    :return: True si la mise à jour est réussie, False sinon
-    """
-    filepath = os.path.join(NOTES_DIR, f"{title}.txt")
+def update_note(user_id, title, new_content):
+    """Met à jour le contenu d'une note pour un utilisateur spécifique"""
+    user_dir = os.path.join(NOTES_DIR, str(user_id))
+    filepath = os.path.join(user_dir, f"{title}.txt")
+    
     if os.path.exists(filepath):
-        with open(filepath, "w") as file:
+        with open(filepath, "w", encoding="utf-8") as file:
             file.write(new_content)
         return True
     return False

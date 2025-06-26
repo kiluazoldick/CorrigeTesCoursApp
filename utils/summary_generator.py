@@ -4,7 +4,7 @@ import logging
 import streamlit as st
 from openai import OpenAI
 from dotenv import load_dotenv
-from config import SUMMARY_DIR, SUMMARIES_FILE
+from config import SUMMARY_DIR
 
 # Configuration du logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -18,14 +18,16 @@ client = OpenAI(
     api_key=st.secrets["OPENROUTER_API_KEY"],
 )
 
-def generate_summary(note_title, note_content):
+def generate_summary(user_id, note_title, note_content):
     """
-    Génère un résumé à partir du contenu des notes en utilisant l'API DeepSeek.
-    :param note_title: Titre de la note
-    :param note_content: Contenu de la note
-    :return: Le résumé généré
+    Génère un résumé pour un utilisateur spécifique
     """
     try:
+        # Créer le répertoire utilisateur s'il n'existe pas
+        user_dir = os.path.join(SUMMARY_DIR, str(user_id))
+        if not os.path.exists(user_dir):
+            os.makedirs(user_dir)
+        
         prompt = (
             f"Lis attentivement ce texte et génère un résumé clair et précis.\n"
             f"Le résumé doit :\n"
@@ -53,8 +55,8 @@ def generate_summary(note_title, note_content):
         if not summary_text:
             raise ValueError("Résumé vide retourné par l'API.")
 
-        # Sauvegarde du résumé dans un fichier texte
-        summary_file_path = os.path.join(SUMMARY_DIR, f"{note_title}.txt")
+        # Sauvegarde du résumé dans le répertoire utilisateur
+        summary_file_path = os.path.join(user_dir, f"{note_title}.txt")
         with open(summary_file_path, "w", encoding="utf-8") as file:
             file.write(summary_text)
 
@@ -65,17 +67,17 @@ def generate_summary(note_title, note_content):
         logging.error("Erreur lors de la génération du résumé : %s", e)
         return ""
 
-
-def load_summary(note_title):
+def load_summary(user_id, note_title):
     """
-    Charge un résumé à partir du fichier correspondant.
-    :param note_title: Titre de la note
-    :return: Contenu du résumé
+    Charge un résumé pour un utilisateur spécifique
     """
     try:
-        summary_file_path = os.path.join(SUMMARY_DIR, f"{note_title}.txt")
+        user_dir = os.path.join(SUMMARY_DIR, str(user_id))
+        summary_file_path = os.path.join(user_dir, f"{note_title}.txt")
+        
         with open(summary_file_path, "r", encoding="utf-8") as file:
             summary = file.read()
+        
         logging.info("Résumé chargé depuis : %s", summary_file_path)
         return summary
     except FileNotFoundError:
@@ -84,25 +86,3 @@ def load_summary(note_title):
     except Exception as e:
         logging.error("Erreur lors du chargement du résumé : %s", e)
         return ""
-
-
-def save_all_summaries():
-    """
-    Sauvegarde tous les résumés dans un seul fichier JSON.
-    """
-    try:
-        summaries = {}
-        for filename in os.listdir(SUMMARY_DIR):
-            if filename.endswith(".txt"):
-                note_title = filename[:-4]  # Retirer l'extension .txt
-                summary_path = os.path.join(SUMMARY_DIR, filename)
-                with open(summary_path, "r", encoding="utf-8") as file:
-                    summaries[note_title] = file.read()
-
-        with open(SUMMARIES_FILE, "w", encoding="utf-8") as file:
-            json.dump(summaries, file, ensure_ascii=False, indent=4)
-
-        logging.info("Tous les résumés ont été sauvegardés dans : %s", SUMMARIES_FILE)
-
-    except Exception as e:
-        logging.error("Erreur lors de la sauvegarde de tous les résumés : %s", e)

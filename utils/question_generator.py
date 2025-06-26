@@ -5,7 +5,7 @@ import logging
 import streamlit as st
 from openai import OpenAI
 from dotenv import load_dotenv
-from config import QUESTIONS_DIR, QUESTIONS_FILE
+from config import QUESTIONS_DIR
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -13,22 +13,22 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 # Load environment variables
 load_dotenv()
 
-
-
 # Configuration API
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
     api_key= st.secrets["OPENROUTER_API_KEY"],
 )
 
-def generate_questions(note_title, note_content):
+def generate_questions(user_id, note_title, note_content):
     """
-    Génère des questions à partir du contenu des notes en utilisant l'API DeepSeek.
-    :param note_title: Titre de la note
-    :param note_content: Contenu de la note
-    :return: Une liste de  questions générées
+    Génère des questions pour un utilisateur spécifique
     """
     try:
+        # Créer le répertoire utilisateur s'il n'existe pas
+        user_dir = os.path.join(QUESTIONS_DIR, str(user_id))
+        if not os.path.exists(user_dir):
+            os.makedirs(user_dir)
+        
         prompt = (
             f"À partir de ce texte, crée des questions  relativement ouvertes qui permettent l'apprentissage actif. "
             f"Tu choisiras un nombre de questions adéquat en fonction de la longueur du texte.\n"
@@ -50,6 +50,8 @@ def generate_questions(note_title, note_content):
         # Vérification de la réponse
         logging.info("Réponse brute de l'API : %s", response)
         generated_text = response.choices[0].message.content.strip()
+        
+        # Nettoyer la réponse JSON
         if generated_text.startswith("```json") and generated_text.endswith("```"):
             generated_text = generated_text.strip("```json").strip("```")
         if not generated_text:
@@ -62,43 +64,17 @@ def generate_questions(note_title, note_content):
             logging.error("Erreur lors de l'analyse du JSON : %s", json_err)
             raise ValueError("La réponse de l'API n'est pas un JSON valide.")
 
-        # Sauvegarder les questions dans un fichier JSON
-        json_file_path = os.path.join(QUESTIONS_DIR, f"{note_title}.json")
-        with open(json_file_path, "w") as file:
+        # Sauvegarder les questions dans le répertoire utilisateur
+        json_file_path = os.path.join(user_dir, f"{note_title}.json")
+        with open(json_file_path, "w", encoding="utf-8") as file:
             json.dump(questions, file, indent=4, ensure_ascii=False)
+        
         logging.info("Questions sauvegardées dans : %s", json_file_path)
         return questions
 
     except Exception as e:
         logging.error("Erreur lors de la génération des questions : %s", e)
         return []
-
-def save_questions(questions):
-    """
-    Sauvegarde les questions générées dans un fichier JSON.
-    :param questions: Liste des questions
-    """
-    try:
-        if not os.path.exists(os.path.dirname(QUESTIONS_FILE)):
-            os.makedirs(os.path.dirname(QUESTIONS_FILE))
-        with open(QUESTIONS_FILE, "w") as file:
-            json.dump(questions, file, indent=4)
-        logging.info("Questions sauvegardées dans le fichier principal : %s", QUESTIONS_FILE)
-    except Exception as e:
-        logging.error("Erreur lors de la sauvegarde des questions : %s", e)
-
-def load_questions():
-    """
-    Charge les questions sauvegardées à partir du fichier JSON.
-    :return: Liste des questions
-    """
-    try:
-        if os.path.exists(QUESTIONS_FILE):
-            with open(QUESTIONS_FILE, "r") as file:
-                return json.load(file)
-    except Exception as e:
-        logging.error("Erreur lors du chargement des questions : %s", e)
-    return []
 
 def evaluate_answer(question, user_answer, correct_answer):
     """
@@ -136,16 +112,14 @@ def evaluate_answer(question, user_answer, correct_answer):
         if not raw_content:
             raise ValueError("La réponse de l'API est vide.")
 
-        # Nettoyage plus robuste du JSON
+        # Nettoyage du JSON
         cleaned_content = re.sub(r"^```json\s*|\s*```$", "", raw_content.strip(), flags=re.MULTILINE)
-        
-        # Correction des guillemets simples en doubles si nécessaire
         cleaned_content = cleaned_content.replace("'", '"')
         
         try:
             evaluation = json.loads(cleaned_content)
         except json.JSONDecodeError:
-            # Si le parsing échoue, tentative de correction du format
+            # Fallback si le parsing échoue
             score_match = re.search(r'score["\']?\s*:\s*(\d+)', cleaned_content)
             if score_match:
                 return {"score": int(score_match.group(1))}
