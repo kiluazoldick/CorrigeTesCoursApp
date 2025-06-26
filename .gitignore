@@ -4,10 +4,6 @@ __pycache__/
 #annoying sys file that gets pushed
 .DS_Store
 
-notes/
-questions/
-stats/
-summaries/
 
 .streamlit/secrets.toml
 __pycache__/

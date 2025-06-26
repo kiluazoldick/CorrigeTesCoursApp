@@ -1,0 +1,30 @@
+[
+    {
+        "text": "Quelle est la définition du commerce électronique selon l'OCDE ?",
+        "reponse": "Selon l'OCDE, le commerce électronique est 'la vente ou l'achat de biens ou de services, effectués par une entreprise, un particulier, une administration ou toute autre entité publique ou privée, et réalisé au moyen d'un réseau électronique'."
+    },
+    {
+        "text": "Quels sont les acteurs mentionnés dans la définition de l'OCDE pouvant participer au commerce électronique ?",
+        "reponse": "Les acteurs mentionnés sont une entreprise, un particulier, une administration ou toute autre entité publique ou privée."
+    },
+    {
+        "text": "Qu'est-ce que le commerce électronique selon la définition générale ?",
+        "reponse": "Le commerce électronique est l'utilisation d'un média électronique pour la réalisation de transactions commerciales, principalement la vente de produits via internet."
+    },
+    {
+        "text": "Quel terme est utilisé pour désigner un client effectuant des achats sur internet ?",
+        "reponse": "Le terme utilisé est 'cyberconsommateur'."
+    },
+    {
+        "text": "Le commerce électronique se limite-t-il uniquement à la vente en ligne ? Justifiez votre réponse.",
+        "reponse": "Non, le commerce électronique ne se limite pas à la vente en ligne. Il englobe également des activités comme la réalisation de devis en ligne, le conseil aux utilisateurs, la mise à disposition d'un catalogue électronique, un plan d'accès aux points de vente, la gestion des stocks, le paiement en ligne, le suivi de la livraison et le service après-vente."
+    },
+    {
+        "text": "Citez trois exemples d'activités incluses dans le commerce électronique autres que la vente en ligne.",
+        "reponse": "Trois exemples sont : la réalisation de devis en ligne, le conseil aux utilisateurs et la mise à disposition d'un catalogue électronique."
+    },
+    {
+        "text": "Quelle est la différence entre les définitions 2 et 3 du commerce électronique ?",
+        "reponse": "La définition 3 inclut explicitement les mécanismes d'achat pour le B-To-B (business-to-business) et élargit le champ du commerce électronique à d'autres activités comme la gestion des stocks, le suivi de la livraison et le service après-vente, alors que la définition 2 se concentre principalement sur la vente de produits via internet."
+    }
+]

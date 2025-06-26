@@ -1,0 +1,13 @@
+Contrairement à l'idée répandue, le commerce électronique n'est pas un nouveau 
+phénomène. En effet les échanges électroniques existaient depuis les années cinquante 
+grâce principalement aux standards de l'EDI (Electronic Data Inter change). 
+L'EDI ou échange de données informatisées : 
+Cette technologie date de 1948.  
+Elle consiste en l‘Echange de Données Informatisées par un réseau de partenaires et de 
+fournisseurs ; l’EDI standardise la présentation, le format des messages et des 
+documents pour faciliter la circulation entre les entreprises membres, permettant ainsi 
+l'automatisation des approvisionnements, la gestion des stocks, la logistique, les ventes, 
+les ordres bancaires, etc. 
+Le principal inconvénient reste les lourds investissements qu'exige l'EDI lors de son 
+implantation, ce qui a ramené à une migration vers un nouveau moyen de commerce 
+électronique, à savoir l'Internet. 

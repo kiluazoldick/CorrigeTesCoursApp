@@ -1,0 +1,46 @@
+{
+    "attempts": [
+        {
+            "timestamp": "2025-06-26T19:23:45.048084",
+            "question": "Quelle est la technologie mentionnée dans le texte qui a précédé le commerce électronique moderne ?",
+            "user_answer": "EDI",
+            "correct_answer": "L'EDI (Electronic Data Interchange)",
+            "score": 5
+        },
+        {
+            "timestamp": "2025-06-26T19:23:47.722748",
+            "question": "Depuis quand l'EDI existe-t-il selon le texte ?",
+            "user_answer": "1948",
+            "correct_answer": "Depuis 1948",
+            "score": 5
+        },
+        {
+            "timestamp": "2025-06-26T19:23:49.320747",
+            "question": "Quels sont les avantages principaux de l'EDI pour les entreprises ?",
+            "user_answer": "",
+            "correct_answer": "L'EDI standardise la présentation et le format des messages et documents, facilitant la circulation entre les entreprises membres et permettant l'automatisation des approvisionnements, la gestion des stocks, la logistique, les ventes, les ordres bancaires, etc.",
+            "score": 0
+        },
+        {
+            "timestamp": "2025-06-26T19:23:50.764617",
+            "question": "Quel est le principal inconvénient de l'EDI mentionné dans le texte ?",
+            "user_answer": "",
+            "correct_answer": "Les lourds investissements qu'exige l'EDI lors de son implantation",
+            "score": 0
+        },
+        {
+            "timestamp": "2025-06-26T19:23:53.760510",
+            "question": "Quel nouveau moyen de commerce électronique a remplacé l'EDI selon le texte ?",
+            "user_answer": "",
+            "correct_answer": "L'Internet",
+            "score": 0
+        },
+        {
+            "timestamp": "2025-06-26T19:23:56.963972",
+            "question": "Pourquoi les entreprises ont-elles migré vers un nouveau moyen de commerce électronique selon le texte ?",
+            "user_answer": "",
+            "correct_answer": "En raison des lourds investissements requis par l'EDI, elles ont migré vers l'Internet.",
+            "score": 0
+        }
+    ]
+}

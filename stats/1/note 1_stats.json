@@ -1,0 +1,53 @@
+{
+    "attempts": [
+        {
+            "timestamp": "2025-06-26T19:17:56.618366",
+            "question": "Quelle est la définition du commerce électronique selon l'OCDE ?",
+            "user_answer": " Selon la définition de l'OCDE, le commerce électronique, est \"la vente ou \nl'achat de biens ou de services, effectués par une entreprise, un particulier, une \nadministration ou toute autre entité publique ou privée, et réalisé au moyen d'un \nréseau électronique\". ",
+            "correct_answer": "Selon l'OCDE, le commerce électronique est 'la vente ou l'achat de biens ou de services, effectués par une entreprise, un particulier, une administration ou toute autre entité publique ou privée, et réalisé au moyen d'un réseau électronique'.",
+            "score": 5
+        },
+        {
+            "timestamp": "2025-06-26T19:17:59.539111",
+            "question": "Quels sont les acteurs mentionnés dans la définition de l'OCDE pouvant participer au commerce électronique ?",
+            "user_answer": "",
+            "correct_answer": "Les acteurs mentionnés sont une entreprise, un particulier, une administration ou toute autre entité publique ou privée.",
+            "score": 0
+        },
+        {
+            "timestamp": "2025-06-26T19:18:01.099431",
+            "question": "Qu'est-ce que le commerce électronique selon la définition générale ?",
+            "user_answer": "",
+            "correct_answer": "Le commerce électronique est l'utilisation d'un média électronique pour la réalisation de transactions commerciales, principalement la vente de produits via internet.",
+            "score": 0
+        },
+        {
+            "timestamp": "2025-06-26T19:18:02.383213",
+            "question": "Quel terme est utilisé pour désigner un client effectuant des achats sur internet ?",
+            "user_answer": "",
+            "correct_answer": "Le terme utilisé est 'cyberconsommateur'.",
+            "score": 0
+        },
+        {
+            "timestamp": "2025-06-26T19:18:03.906405",
+            "question": "Le commerce électronique se limite-t-il uniquement à la vente en ligne ? Justifiez votre réponse.",
+            "user_answer": "",
+            "correct_answer": "Non, le commerce électronique ne se limite pas à la vente en ligne. Il englobe également des activités comme la réalisation de devis en ligne, le conseil aux utilisateurs, la mise à disposition d'un catalogue électronique, un plan d'accès aux points de vente, la gestion des stocks, le paiement en ligne, le suivi de la livraison et le service après-vente.",
+            "score": 0
+        },
+        {
+            "timestamp": "2025-06-26T19:18:06.135377",
+            "question": "Citez trois exemples d'activités incluses dans le commerce électronique autres que la vente en ligne.",
+            "user_answer": "",
+            "correct_answer": "Trois exemples sont : la réalisation de devis en ligne, le conseil aux utilisateurs et la mise à disposition d'un catalogue électronique.",
+            "score": 0
+        },
+        {
+            "timestamp": "2025-06-26T19:18:07.724396",
+            "question": "Quelle est la différence entre les définitions 2 et 3 du commerce électronique ?",
+            "user_answer": "",
+            "correct_answer": "La définition 3 inclut explicitement les mécanismes d'achat pour le B-To-B (business-to-business) et élargit le champ du commerce électronique à d'autres activités comme la gestion des stocks, le suivi de la livraison et le service après-vente, alors que la définition 2 se concentre principalement sur la vente de produits via internet.",
+            "score": 0
+        }
+    ]
+}

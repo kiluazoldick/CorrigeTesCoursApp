@@ -1,0 +1,26 @@
+[
+    {
+        "text": "Quelle est la technologie mentionnée dans le texte qui a précédé le commerce électronique moderne ?",
+        "reponse": "L'EDI (Electronic Data Interchange)"
+    },
+    {
+        "text": "Depuis quand l'EDI existe-t-il selon le texte ?",
+        "reponse": "Depuis 1948"
+    },
+    {
+        "text": "Quels sont les avantages principaux de l'EDI pour les entreprises ?",
+        "reponse": "L'EDI standardise la présentation et le format des messages et documents, facilitant la circulation entre les entreprises membres et permettant l'automatisation des approvisionnements, la gestion des stocks, la logistique, les ventes, les ordres bancaires, etc."
+    },
+    {
+        "text": "Quel est le principal inconvénient de l'EDI mentionné dans le texte ?",
+        "reponse": "Les lourds investissements qu'exige l'EDI lors de son implantation"
+    },
+    {
+        "text": "Quel nouveau moyen de commerce électronique a remplacé l'EDI selon le texte ?",
+        "reponse": "L'Internet"
+    },
+    {
+        "text": "Pourquoi les entreprises ont-elles migré vers un nouveau moyen de commerce électronique selon le texte ?",
+        "reponse": "En raison des lourds investissements requis par l'EDI, elles ont migré vers l'Internet."
+    }
+]
