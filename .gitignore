@@ -4,9 +4,15 @@ __pycache__/
 #annoying sys file that gets pushed
 .DS_Store
 
-.env
-.streamlit/secrets.toml
 notes/
 questions/
 stats/
 summaries/
+
+.streamlit/secrets.toml
+__pycache__/
+*.pyc
+data/
+venv/
+.env
+.DS_Store
