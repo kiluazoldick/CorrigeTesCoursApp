@@ -1,0 +1,39 @@
+{
+    "attempts": [
+        {
+            "timestamp": "2025-06-27T15:49:37.202513",
+            "question": "Quelles sont les principales technologies sans fil mentionnées dans le texte ?",
+            "user_answer": "",
+            "correct_answer": "Le texte ne mentionne pas spécifiquement les noms des technologies sans fil, mais il évoque leur importance dans la connectivité moderne.",
+            "score": 0
+        },
+        {
+            "timestamp": "2025-06-27T15:49:39.335077",
+            "question": "Comment les technologies sans fil ont-elles transformé notre quotidien selon le texte ?",
+            "user_answer": "",
+            "correct_answer": "Les technologies sans fil ont radicalement transformé la façon dont nous communiquons, travaillons et interagissons avec nos appareils.",
+            "score": 0
+        },
+        {
+            "timestamp": "2025-06-27T15:49:42.382267",
+            "question": "Quels aspects des technologies sans fil seront explorés dans cette section ?",
+            "user_answer": "",
+            "correct_answer": "Les principes de base des technologies sans fil, leurs différents types et leurs applications concrètes.",
+            "score": 0
+        },
+        {
+            "timestamp": "2025-06-27T15:49:44.192937",
+            "question": "Pourquoi les technologies sans fil sont-elles considérées comme au cœur de la connectivité moderne ?",
+            "user_answer": "",
+            "correct_answer": "Parce qu'elles ont radicalement transformé la communication, le travail et l'interaction avec les appareils.",
+            "score": 0
+        },
+        {
+            "timestamp": "2025-06-27T15:49:47.478008",
+            "question": "Quelle est la première étape proposée pour comprendre les technologies sans fil dans ce texte ?",
+            "user_answer": "",
+            "correct_answer": "Commencer par examiner les principes de base des technologies sans fil.",
+            "score": 0
+        }
+    ]
+}

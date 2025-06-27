@@ -1,0 +1,25 @@
+{
+    "attempts": [
+        {
+            "timestamp": "2025-06-27T15:47:34.718514",
+            "question": "Quel rôle jouent les réseaux sans fil et mobiles dans notre ère de connectivité numérique ?",
+            "user_answer": "l'accès à \nl'information, à la communication et aux services est possible partout, à tout moment.",
+            "correct_answer": "Les réseaux sans fil et mobiles jouent un rôle incontournable en permettant une connectivité omniprésente, l'accès à l'information, à la communication et aux services partout et à tout moment.",
+            "score": 5
+        },
+        {
+            "timestamp": "2025-06-27T15:47:36.761178",
+            "question": "Qu'est-ce que les réseaux sans fil et mobiles ont rendu possible dans notre quotidien ?",
+            "user_answer": "l'accès à \nl'information, à la communication et aux services est possible partout, à tout moment.",
+            "correct_answer": "Les réseaux sans fil et mobiles ont rendu possible un monde où nous sommes toujours connectés, avec un accès permanent à l'information, à la communication et aux services, révolutionnant ainsi notre façon de vivre, de travailler et d'interagir.",
+            "score": 5
+        },
+        {
+            "timestamp": "2025-06-27T15:47:38.728459",
+            "question": "Pourquoi peut-on dire que les réseaux sans fil et mobiles ont révolutionné notre société ?",
+            "user_answer": "",
+            "correct_answer": "On peut dire que les réseaux sans fil et mobiles ont révolutionné notre société car ils ont transformé la façon dont nous vivons, travaillons et interagissons avec le monde, en offrant une connectivité permanente et un accès universel à l'information et aux services.",
+            "score": 0
+        }
+    ]
+}
