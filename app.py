@@ -41,14 +41,7 @@ if not st.session_state.logged_in:
 # ================================================
 
 # Sidebar 
-st.sidebar.title(f"📝 Bonjour, {st.session_state.user['username']}")
-st.sidebar.markdown("<h3>Menu</h3>", unsafe_allow_html=True)
-
-# Ajouter un bouton de déconnexion
-if st.sidebar.button("🚪 Déconnexion"):
-    st.session_state.logged_in = False
-    st.session_state.user = None
-    st.rerun()
+st.sidebar.title(f"👋🏾Bonjour, {st.session_state.user['username']}")
 
 menu = st.sidebar.radio(
     "📂 <span style='color: #0066CC;'>Choisissez une option :</span>", 
@@ -59,18 +52,26 @@ menu = st.sidebar.radio(
     key="menu_radio"
 )
 
+st.sidebar.markdown("---")
+
+# Ajouter un bouton de déconnexion
+if st.sidebar.button("🚪 Déconnexion"):
+    st.session_state.logged_in = False
+    st.session_state.user = None
+    st.rerun()
+
 # Main content
 if menu == "Dashboard":
     # Header with custom styles
-    st.markdown("<h1>Bienvenue sur Corrige Tes Cours ⚡️</h1>", unsafe_allow_html=True)
+    st.markdown("<h1>Bienvenue sur CorrigeTesCours </h1>", unsafe_allow_html=True)
     st.markdown("---")
-    st.subheader(f"Apprendre ses cours grâce au _Active Learning_, {st.session_state.user['username']}!")
+    st.subheader(f"Apprenez ses cours grâce au _Active Learning_, {st.session_state.user['username']}!")
     
     # Feature list with emojis and custom formatting
     st.markdown(
         """
         <div style='padding: 10px;'>
-            <p><strong>Corrige Tes Cours</strong> vous permet de :</p>
+            <p><strong>CorrigeTesCours</strong> vous permet de :</p>
             <ul>
                 <li>🗒️ <strong>Prendre des notes</strong> et les organiser.</li>
                 <li>📋 <strong>Résumer ses notes</strong> pour un meilleur apprentissage.</li>
@@ -85,6 +86,8 @@ if menu == "Dashboard":
 elif menu == "Notes":
     st.header("🗒️ Prise de Notes")
     
+   
+    
     user_id = st.session_state.user["id"]
     
     if "notes" not in st.session_state:
@@ -92,6 +95,7 @@ elif menu == "Notes":
     
     if "editing_note" not in st.session_state:
         st.session_state.editing_note = None
+
 
     # Affichage des notes existantes
     st.write("### Vos notes :")
@@ -101,14 +105,15 @@ elif menu == "Notes":
             with col1:
                 st.write(f"📝 {note['title']}")
             with col2:
-                if st.button("Voir/Modifier", key=f"edit_{note['title']}"):
+                if st.button("✏️Voir/Modifier", key=f"edit_{note['title']}"):
                     st.session_state.editing_note = note
             with col3:
-                if st.button("Supprimer", key=f"delete_{note['title']}"):
+                if st.button("🗑️Supprimer", key=f"delete_{note['title']}"):
                     delete_note(user_id, note['title'])
                     st.session_state.notes = load_notes(user_id)
                     if st.session_state.editing_note and st.session_state.editing_note['title'] == note['title']:
                         st.session_state.editing_note = None
+                    st.session_state.success_message = f"Note '{note['title']}' supprimée avec succès !"
                     st.rerun()
     else:
         st.info("Aucune note disponible pour le moment.")
@@ -127,7 +132,7 @@ elif menu == "Notes":
         with col1:
             if st.button("Sauvegarder les modifications"):
                 if update_note(user_id, st.session_state.editing_note['title'], edited_content):
-                    st.success("Note mise à jour avec succès!")
+                    st.session_state.success_message = "Note mise à jour avec succès!"
                     st.session_state.notes = load_notes(user_id)
                     st.session_state.editing_note = None
                     st.rerun()
@@ -136,21 +141,45 @@ elif menu == "Notes":
         with col2:
             if st.button("Annuler"):
                 st.session_state.editing_note = None
-                st.rerun()
+
+                 # Gestion des messages de succès
+    if "success_message" in st.session_state:
+        st.success(st.session_state.success_message)
+        del st.session_state.success_message
 
     # Section pour créer une nouvelle note
     st.markdown("---")
     st.subheader("Créer une nouvelle note")
-    note_title = st.text_input("Titre de la note")
-    note_content = st.text_area("Contenu de la note", height=200)
+    
+    # Initialisation des champs
+    if "new_note_title" not in st.session_state:
+        st.session_state.new_note_title = ""
+    if "new_note_content" not in st.session_state:
+        st.session_state.new_note_content = ""
+    
+    note_title = st.text_input("Titre de la note", value=st.session_state.new_note_title, key="new_title")
+    note_content = st.text_area("Contenu de la note", value=st.session_state.new_note_content, height=200, key="new_content")
+    
     if st.button("Sauvegarder"):
         if note_title and note_content:
             save_note(user_id, note_title, note_content)
             st.session_state.notes = load_notes(user_id)
-            st.success(f"Note '{note_title}' sauvegardée avec succès !")
+            
+            # Réinitialisation du formulaire
+            st.session_state.new_note_title = ""
+            st.session_state.new_note_content = ""
+            
+            # Message de succès
+            st.session_state.success_message = f"Note '{note_title}' sauvegardée avec succès !"
             st.rerun()
         else:
             st.warning("Veuillez fournir un titre et un contenu pour votre note.")
+             
+             # Gestion des messages de succès
+    if "success_message" in st.session_state:
+        st.success(st.session_state.success_message)
+        del st.session_state.success_message
+
 
 elif menu == "Résumé":
     st.header("📋 Mode Résumé")

@@ -114,3 +114,13 @@ def verify_user(email, password):
     if user and verify_password(password, user[3]):
         return {"id": user[0], "email": user[1], "username": user[2]}
     return None
+
+def get_existing_summary(user_id, note_title):
+    conn = get_db()
+    cur = conn.cursor()
+    cur.execute("SELECT summary FROM summaries WHERE user_id = ? AND note_title = ?", 
+                (user_id, note_title))
+    result = cur.fetchone()
+    conn.close()
+    return result[0] if result else None
+
