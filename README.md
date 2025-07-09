@@ -146,12 +146,3 @@ N’hésitez pas à :
 Auteur : **Nanga Doumer**
 Email : \[nangadoumer@gmail.com]
 GitHub : [@kiluazoldick](https://github.com/kiluazoldick)
-
----
-
-## 📄 Licence
-
-Ce projet est sous licence **MIT**.
-Voir le fichier `LICENSE` pour plus de détails.
-
-```
