@@ -1,0 +1,39 @@
+{
+    "attempts": [
+        {
+            "timestamp": "2025-07-12T13:00:47.906045",
+            "question": "Qui est l'auteur de cette note et quel est son objectif ?",
+            "user_answer": "Ariana Diaz tester l'application",
+            "correct_answer": "L'auteur de cette note est Ariana Diaz. Son objectif est de tester l'application tout en fournissant quelques informations basiques.",
+            "score": 5
+        },
+        {
+            "timestamp": "2025-07-12T13:00:50.359284",
+            "question": "Quelle est la capitale du Cameroun selon la note ?",
+            "user_answer": "Yaounde",
+            "correct_answer": "La capitale du Cameroun mentionnée dans la note est Yaoundé.",
+            "score": 5
+        },
+        {
+            "timestamp": "2025-07-12T13:00:52.188153",
+            "question": "Combien de dents y a-t-il dans une bouche d'adulte selon le texte ?",
+            "user_answer": "33",
+            "correct_answer": "Le texte indique qu'il y a 32 dents dans une bouche.",
+            "score": 0
+        },
+        {
+            "timestamp": "2025-07-12T13:00:53.950946",
+            "question": "Quelle est la forme de la Terre selon la note ?",
+            "user_answer": "ovale",
+            "correct_answer": "La note mentionne que la Terre est ronde.",
+            "score": 4
+        },
+        {
+            "timestamp": "2025-07-12T13:00:55.813923",
+            "question": "Quel manga est considéré comme le meilleur au monde selon l'auteur de la note ?",
+            "user_answer": "Hunter x Hunter",
+            "correct_answer": "Selon l'auteur, le meilleur manga au monde est Hunter x Hunter.",
+            "score": 5
+        }
+    ]
+}

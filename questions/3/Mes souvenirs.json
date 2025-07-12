@@ -1,0 +1,22 @@
+[
+    {
+        "text": "Qui est l'auteur de cette note et quel est son objectif ?",
+        "reponse": "L'auteur de cette note est Ariana Diaz. Son objectif est de tester l'application tout en fournissant quelques informations basiques."
+    },
+    {
+        "text": "Quelle est la capitale du Cameroun selon la note ?",
+        "reponse": "La capitale du Cameroun mentionnée dans la note est Yaoundé."
+    },
+    {
+        "text": "Combien de dents y a-t-il dans une bouche d'adulte selon le texte ?",
+        "reponse": "Le texte indique qu'il y a 32 dents dans une bouche."
+    },
+    {
+        "text": "Quelle est la forme de la Terre selon la note ?",
+        "reponse": "La note mentionne que la Terre est ronde."
+    },
+    {
+        "text": "Quel manga est considéré comme le meilleur au monde selon l'auteur de la note ?",
+        "reponse": "Selon l'auteur, le meilleur manga au monde est Hunter x Hunter."
+    }
+]
